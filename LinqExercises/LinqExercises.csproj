@@ -57,6 +57,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -90,6 +92,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Infrastructure\NorthwindDataContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthwindDataContext.edmx</DependentUpon>
+      <LastGenOutput>NorthwindDataContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Infrastructure\NorthwindDataContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthwindDataContext.edmx</DependentUpon>
+      <LastGenOutput>NorthwindDataContext.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +109,6 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
-    <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
@@ -105,10 +116,68 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Category.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Customer.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\CustomerDemographic.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Employee.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\NorthwindDataContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\NorthwindDataContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\NorthwindDataContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Order.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Order_Detail.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Product.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Region.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Shipper.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Supplier.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\sysdiagram.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Territory.cs">
+      <DependentUpon>NorthwindDataContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <EntityDeploy Include="Infrastructure\NorthwindDataContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthwindDataContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Infrastructure\NorthwindDataContext.edmx.diagram">
+      <DependentUpon>NorthwindDataContext.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,6 +188,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
