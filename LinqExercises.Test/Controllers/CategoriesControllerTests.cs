@@ -3,6 +3,7 @@ using LinqExercises.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,12 @@ namespace LinqExercises.Test.Controllers
         [TestMethod]
         public void GetAllTest()
         {
+            // ARRANGE
+            _categoriesController = new CategoriesController();
+
             // ACT
             IHttpActionResult actionResult = _categoriesController.GetAll();
-            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Category>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<DbSet<Category>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
