@@ -1,6 +1,8 @@
 ﻿using LinqExercises.Infrastructure;
 using System;
+using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace LinqExercises.Controllers
 {
@@ -13,10 +15,18 @@ namespace LinqExercises.Controllers
             _db = new NORTHWNDEntities();
         }
 
-        [HttpGet, Route("api/employees")]
+        // GET: api/employees
+        [HttpGet, Route("api/employees"), ResponseType(typeof(IQueryable<Employee>))]
         public IHttpActionResult GetEmployees()
         {
-            throw new NotImplementedException("Return all employee first and last names from the Employees table by combining the 2 columns aliased as 'DisplayName'. The combined format should be 'LastName, FirstName'");
+            throw new NotImplementedException("Write a query to return all employees");
+        }
+
+        // GET: api/employees/title/Sales Manager
+        [HttpGet, Route("api/employees/title/{title}"), ResponseType(typeof(IQueryable<Employee>))]
+        public IHttpActionResult GetEmployeesByTitle(string title)
+        {
+            throw new NotImplementedException("Write a query to return all employees with the given Title");
         }
 
         protected override void Dispose(bool disposing)

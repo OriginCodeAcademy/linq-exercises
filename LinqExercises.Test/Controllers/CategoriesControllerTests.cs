@@ -28,7 +28,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _categoriesController.GetAll();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<Category>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Category>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -41,7 +41,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _categoriesController.Search("Co");
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<Category>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Category>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);

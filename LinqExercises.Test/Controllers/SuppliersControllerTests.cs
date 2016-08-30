@@ -1,4 +1,5 @@
 ﻿using LinqExercises.Controllers;
+using LinqExercises.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _suppliersController.GetSalesAndMarketing();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Supplier>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -40,7 +41,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _suppliersController.SearchSuppliers("rue");
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Supplier>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);

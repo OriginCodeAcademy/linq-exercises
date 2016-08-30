@@ -27,7 +27,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _shippersController.GetFreightReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);

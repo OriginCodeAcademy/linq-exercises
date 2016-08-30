@@ -1,4 +1,5 @@
 ﻿using LinqExercises.Controllers;
+using LinqExercises.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _customersController.GetAll("London");
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Customer>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -41,7 +42,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _customersController.GetAllFromMexicoSwedenGermany();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Customer>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -54,7 +55,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _customersController.GetCustomersThatShipWith("Speedy Express");
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Customer>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -67,7 +68,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _customersController.GetCustomersWithoutOrders();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Customer>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);

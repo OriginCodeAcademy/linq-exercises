@@ -1,4 +1,5 @@
 ﻿using LinqExercises.Controllers;
+using LinqExercises.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,25 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _employeesController.GetEmployees();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Employee>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
             Assert.AreEqual(contentResult.Content.Count(), 9);
+        }
+
+        [TestMethod]
+        public void GetAllEmployeesByTitleTests()
+        {
+            // ACT
+            IHttpActionResult actionResult = _employeesController.GetEmployeesByTitle("Sales Representative");
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Employee>>;
+
+            // ASSERT
+            Assert.IsNotNull(contentResult);
+            Assert.IsNotNull(contentResult.Content);
+            Assert.AreEqual(contentResult.Content.Count(), 6);
         }
     }
 }

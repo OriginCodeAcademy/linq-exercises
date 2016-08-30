@@ -1,4 +1,5 @@
 ﻿using LinqExercises.Controllers;
+using LinqExercises.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _productsController.GetProductsInCategory("Condiments");
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Product>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -53,7 +54,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _productsController.GetStockReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);

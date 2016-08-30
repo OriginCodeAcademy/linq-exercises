@@ -1,6 +1,8 @@
 ﻿using LinqExercises.Infrastructure;
 using System;
+using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace LinqExercises.Controllers
 {
@@ -13,16 +15,18 @@ namespace LinqExercises.Controllers
             _db = new NORTHWNDEntities();
         }
 
-        [HttpGet, Route("api/suppliers/salesAndMarketing")]
+        //GET: api/suppliers/salesAndMarketing
+        [HttpGet, Route("api/suppliers/salesAndMarketing"), ResponseType(typeof(IQueryable<Supplier>))]
         public IHttpActionResult GetSalesAndMarketing()
         {
-            throw new NotImplementedException("Write a query to return all available properties in the Suppliers collection for the marketing managers and sales representatives that have a FAX number");
+            throw new NotImplementedException("Write a query to return all Suppliers that are marketing managers or sales representatives that have a fax number");
         }
 
-        [HttpGet, Route("api/suppliers/search")]
+        //GET: api/suppliers/search
+        [HttpGet, Route("api/suppliers/search"), ResponseType(typeof(IQueryable<Supplier>))]
         public IHttpActionResult SearchSuppliers(string term)
         {
-            throw new NotImplementedException("Write a query to return all the company names, city, country and postal code from the Suppliers table containing the 'term' variable in their address. The list should ordered alphabetically by company name.");
+            throw new NotImplementedException("Write a query to return all Suppliers containing the 'term' variable in their address. The list should ordered alphabetically by company name.");
         }
 
         protected override void Dispose(bool disposing)

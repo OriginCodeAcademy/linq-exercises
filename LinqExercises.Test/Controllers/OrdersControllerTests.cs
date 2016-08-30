@@ -1,4 +1,5 @@
 ﻿using LinqExercises.Controllers;
+using LinqExercises.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _ordersController.GetOrdersBetween(DateTime.Parse("01/01/1997"), DateTime.Parse("12/31/1997"));
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Order>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
@@ -40,7 +41,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _ordersController.PurchaseReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IEnumerable<object>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
