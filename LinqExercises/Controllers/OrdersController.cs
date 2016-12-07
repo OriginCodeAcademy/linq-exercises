@@ -27,7 +27,13 @@ namespace LinqExercises.Controllers
         public IHttpActionResult PurchaseReport()
         {
             // See this blog post for more information about projecting to anonymous objects. https://blogs.msdn.microsoft.com/swiss_dpe_team/2008/01/25/using-your-own-defined-type-in-a-linq-query-expression/
-            throw new NotImplementedException("Write a query to return an array of anonymous objects that have two properties. A Product property and the quantity ordered for that product labelled as 'QuantityPurchased' ordered by QuantityPurchased in descending order.");
+            throw new NotImplementedException(@"
+                Write a query to return an array of anonymous objects that have two properties. 
+                1. A Product property containing that particular product
+                2. A QuantityPurchased property containing the number of times that product was purchased.
+
+                This array should be ordered by QuantityPurchased in descending order.
+            ");
         }
 
         protected override void Dispose(bool disposing)

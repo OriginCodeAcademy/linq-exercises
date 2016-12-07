@@ -26,13 +26,14 @@ namespace LinqExercises.Test.Controllers
         public void GetFreightReportTest()
         {
             // ACT
-            IHttpActionResult actionResult = _shippersController.GetFreightReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
+            dynamic contentResult = _shippersController.GetFreightReport();
+
+            var list = ((IEnumerable<dynamic>)contentResult.Content).ToList();
 
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 3);
+            Assert.AreEqual(list.Count, 3);
         }
     }
 }

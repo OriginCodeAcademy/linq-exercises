@@ -53,13 +53,14 @@ namespace LinqExercises.Test.Controllers
         public void GetStockReportTest()
         {
             // ACT
-            IHttpActionResult actionResult = _productsController.GetStockReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
+            dynamic contentResult = _productsController.GetStockReport();
+
+            var list = ((IEnumerable<dynamic>)contentResult.Content).ToList();
 
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 12);
+            Assert.AreEqual(list.Count, 10);
         }
     }
 }

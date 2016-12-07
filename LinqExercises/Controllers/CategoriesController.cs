@@ -1,6 +1,5 @@
 ﻿using LinqExercises.Infrastructure;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -20,20 +19,14 @@ namespace LinqExercises.Controllers
         [HttpGet, Route("api/categories"), ResponseType(typeof(IQueryable<Category>))]
         public IHttpActionResult GetAll()
         {
-            return Ok(_db.Categories);
+            throw new NotImplementedException("Write a query to return all categories");
         }
 
         //GET: /api/categories/search?term={term}
         [HttpGet, Route("api/categories/search"), ResponseType(typeof(IQueryable<Category>))]
         public IHttpActionResult Search(string term)
         {
-            // Write a query to return all categories where the category name 
-            // contains the search term.
-            var resultSet = from category in _db.Categories
-                            where category.CategoryName.Contains(term)
-                            select category;
-
-            return Ok(resultSet);
+            throw new NotImplementedException("Write a query to return all categories where the category name contains the search term.");
         }
 
         protected override void Dispose(bool disposing)

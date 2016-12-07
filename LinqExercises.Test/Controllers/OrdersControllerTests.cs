@@ -33,20 +33,21 @@ namespace LinqExercises.Test.Controllers
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 398);
+            Assert.AreEqual(contentResult.Content.Count(), 307);
         }
 
         [TestMethod]
         public void PurchaseReportTest()
         {
             // ACT
-            IHttpActionResult actionResult = _ordersController.PurchaseReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
+            dynamic contentResult = _ordersController.PurchaseReport();
+
+            var list = ((IEnumerable<dynamic>)contentResult.Content).ToList();
 
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 77);
+            Assert.AreEqual(list.Count, 77);
         }
     }
 }
