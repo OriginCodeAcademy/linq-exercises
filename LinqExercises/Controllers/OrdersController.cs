@@ -19,7 +19,7 @@ namespace LinqExercises.Controllers
         [HttpGet, Route("api/orders/between/{startDate}/{endDate}"), ResponseType(typeof(IQueryable<Order>))]
         public IHttpActionResult GetOrdersBetween(DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException("Write a query to return all orders with required dates between Jan 1, 1997 and Dec 31, 1997 with freight under 100 units.");
+            throw new NotImplementedException("Write a query to return all orders with required dates between the given start date and the given end date with freight under 100 units.");
         }
 
         //GET: api/orders/reports/purchase
@@ -29,6 +29,7 @@ namespace LinqExercises.Controllers
             // See this blog post for more information about projecting to anonymous objects. https://blogs.msdn.microsoft.com/swiss_dpe_team/2008/01/25/using-your-own-defined-type-in-a-linq-query-expression/
             throw new NotImplementedException(@"
                 Write a query to return an array of anonymous objects that have two properties. 
+
                 1. A Product property containing that particular product
                 2. A QuantityPurchased property containing the number of times that product was purchased.
 

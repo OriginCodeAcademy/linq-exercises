@@ -33,7 +33,7 @@ namespace LinqExercises.Test.Controllers
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content, 8);
+            Assert.AreEqual(8, contentResult.Content);
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace LinqExercises.Test.Controllers
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(list.Count, 10);
+            Assert.AreEqual(12, list.Count);
         }
     }
 }

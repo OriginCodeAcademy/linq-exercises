@@ -34,7 +34,14 @@ namespace LinqExercises.Controllers
         public IHttpActionResult GetStockReport()
         {
             // See this blog post for more information about projecting to anonymous objects. https://blogs.msdn.microsoft.com/swiss_dpe_team/2008/01/25/using-your-own-defined-type-in-a-linq-query-expression/
-            throw new NotImplementedException("Write a query to return an array of anonymous objects that have two properties. A Product property and the total units in stock for each product labelled as 'TotalStockUnits' where TotalStockUnits is greater than 100.");
+            throw new NotImplementedException(@"
+                Write a query to return an array of anonymous objects that have two properties. 
+
+                1. A Product property containing that particular product
+                2. A TotalStockUnits property containing the total amount of stock for that particular product. (UnitsInStock + UnitsOnOrder)
+
+                Only return rows where TotalStockUnits is greater than 100.
+            ");
         }
 
         protected override void Dispose(bool disposing)
