@@ -29,7 +29,7 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _employeesController.GetEmployees();
-            var contentResult = actionResult as OkNegotiatedContentResult<DbSet<Employee>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Employee>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
