@@ -20,14 +20,24 @@ namespace LinqExercises.Controllers
         public IHttpActionResult GetFreightReport()
         {
             // See this blog post for more information about projecting to anonymous objects. https://blogs.msdn.microsoft.com/swiss_dpe_team/2008/01/25/using-your-own-defined-type-in-a-linq-query-expression/
-            throw new NotImplementedException(@"
-                Write a query to return an array of anonymous objects that have two properties. 
+            //throw new NotImplementedException(@"
+            //    Write a query to return an array of anonymous objects that have two properties. 
 
-                1. A Shipper property containing that particular shipper.
-                2. A FreightTotals property containing the freight totals for that shipper
+            //    1. A Shipper property containing that particular shipper.
+            //    2. A FreightTotals property containing the freight totals for that shipper
 
-                Return the rows ordered by FreightTotals
-            ");
+            //    Return the rows ordered by FreightTotals
+            //");
+
+            var resultSet = _db.Shippers.Select(s => new
+            {
+                Shipper = s,
+                FreightTotals = s.Orders.Sum(o => o.Freight)
+            }
+            ).Where(o => o.FreightTotals != null).OrderBy(s => s.FreightTotals);
+
+           
+            return Ok(resultSet);
         }
 
         protected override void Dispose(bool disposing)
